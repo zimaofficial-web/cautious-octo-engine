@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antigravity Master Blueprint | Zima AI Knowledge & Skills System</title>
+  <meta name="description" content="Personal AI Development Standards, Knowledge Base & Skills System for Google Antigravity.">
+  <style>
+    :root {
+      --bg-canvas: #090d16;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1f2937;
+      --border-color: #374151;
+      --border-focus: #38bdf8;
+      --text-primary: #f9fafb;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-primary: #38bdf8;
+      --accent-hover: #0284c7;
+      --accent-surface: rgba(56, 189, 248, 0.1);
+      --success: #34d399;
+      --success-surface: rgba(52, 211, 153, 0.1);
+      --warning: #fbbf24;
+      --warning-surface: rgba(251, 191, 36, 0.1);
+      --danger: #f87171;
+      --danger-surface: rgba(248, 113, 113, 0.1);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -2px rgba(0,0,0,0.5);
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    [data-theme="light"] {
+      --bg-canvas: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-elevated: #f1f5f9;
+      --border-color: #cbd5e1;
+      --border-focus: #0284c7;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --accent-primary: #0284c7;
+      --accent-hover: #0369a1;
+      --accent-surface: rgba(2, 132, 199, 0.08);
+      --success: #059669;
+      --success-surface: rgba(5, 150, 105, 0.08);
+      --warning: #d97706;
+      --warning-surface: rgba(217, 119, 6, 0.08);
+      --danger: #dc2626;
+      --danger-surface: rgba(220, 38, 38, 0.08);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent-primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Accessibility focus indicators */
+    :focus-visible {
+      outline: 2px solid var(--border-focus);
+      outline-offset: 2px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-badge {
+      background: var(--accent-surface);
+      color: var(--accent-primary);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid var(--border-color);
+      letter-spacing: 0.5px;
+    }
+    .site-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+    .btn:hover {
+      background: var(--border-color);
+    }
+    .btn-primary {
+      background: var(--accent-primary);
+      color: #ffffff;
+      border-color: var(--accent-primary);
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 48px 0 32px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .hero-tag {
+      color: var(--accent-primary);
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .hero h1 {
+      font-size: 36px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin-bottom: 24px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-number {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent-primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Search Bar */
+    .search-section {
+      padding: 24px 0;
+      position: sticky;
+      top: 65px;
+      z-index: 40;
+      background: var(--bg-canvas);
+    }
+    .search-input-wrapper {
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 14px 20px 14px 44px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-size: 15px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.15s ease;
+    }
+    .search-input:focus {
+      border-color: var(--border-focus);
+      outline: none;
+    }
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    /* Tabs */
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 32px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .tab-btn {
+      padding: 10px 18px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-secondary);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover {
+      color: var(--text-primary);
+    }
+    .tab-btn.active {
+      color: var(--accent-primary);
+      border-bottom-color: var(--accent-primary);
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+      margin-bottom: 64px;
+    }
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-focus);
+    }
+    .card-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .badge-eng { background: var(--accent-surface); color: var(--accent-primary); }
+    .badge-skill { background: var(--success-surface); color: var(--success); }
+    .badge-check { background: var(--warning-surface); color: var(--warning); }
+    .badge-creative { background: rgba(168, 85, 247, 0.1); color: #c084fc; }
+
+    .card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+    .card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+    .card-footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 12px;
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    /* Interactive Checklist Console */
+    .checklist-runner {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 64px;
+      box-shadow: var(--shadow-md);
+    }
+    .runner-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: var(--bg-surface-elevated);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--success);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .checklist-items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--bg-surface-elevated);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s ease;
+    }
+    .check-item:hover {
+      background: var(--border-color);
+    }
+    .check-item input[type="checkbox"] {
+      margin-top: 4px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--success);
+    }
+    .check-item-text {
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+    .tag-req {
+      background: var(--danger-surface);
+      color: var(--danger);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-right: 6px;
+    }
+    .tag-rec {
+      background: var(--warning-surface);
+      color: var(--warning);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-right: 6px;
+    }
+
+    /* Interactive Voice Lab */
+    .voice-lab {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 64px;
+    }
+    .slider-group {
+      margin-bottom: 24px;
+    }
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .slider-control {
+      width: 100%;
+      accent-color: var(--accent-primary);
+    }
+
+    .cliche-tester {
+      margin-top: 32px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 24px;
+    }
+    .cliche-input {
+      width: 100%;
+      height: 90px;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      font-size: 14px;
+      font-family: inherit;
+      resize: vertical;
+      margin-bottom: 12px;
+    }
+    .cliche-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .cliche-pill {
+      background: var(--danger-surface);
+      color: var(--danger);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 32px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 28px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo-area">
+        <span class="logo-badge">ANTIGRAVITY</span>
+        <span class="site-title">Master Blueprint System</span>
+      </div>
+      <div class="header-actions">
+        <button class="btn" id="themeToggle" aria-label="Toggle Light/Dark Theme">
+          <span id="themeIcon">☀️</span> Light Mode
+        </button>
+        <a href="https://github.com/zimaofficial-web/cautious-octo-engine" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          GitHub Repo
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="container">
+    <section class="hero">
+      <span class="hero-tag">Personal AI Standards & Operating System</span>
+      <h1>Architectural Knowledge Base & Skills</h1>
+      <p>
+        Governed by <strong>AGENTS.md</strong>. An evidence-based, reference-only instruction architecture 
+        that enforces strict engineering standards, eliminates repetitive prompting, and isolates technical rigor from creative writing.
+      </p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Engineering Modules</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">15</div>
+          <div class="stat-label">Specialised Skills</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Verification Checklists</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Evidence-Based Validation</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="search-input-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="search" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="Search all skills, standards, checklists, or guidelines (e.g. Supabase, RLS, WCAG, OWASP)..." 
+          aria-label="Search blueprint knowledge base"
+        />
+      </div>
+    </section>
+
+    <!-- Tabs Navigation -->
+    <nav class="tabs-nav" aria-label="Knowledge Sections">
+      <button class="tab-btn active" data-tab="skills">Specialised Skills (15)</button>
+      <button class="tab-btn" data-tab="engineering">Engineering Standards (12)</button>
+      <button class="tab-btn" data-tab="checklists">Verification Checklists (12)</button>
+      <button class="tab-btn" data-tab="voice-lab">Personal Voice & Cliché Lab</button>
+    </nav>
+
+    <!-- Tab 1: Skills Explorer -->
+    <section id="tab-skills" class="tab-pane">
+      <div class="cards-grid" id="skillsGrid"></div>
+    </section>
+
+    <!-- Tab 2: Engineering Standards -->
+    <section id="tab-engineering" class="tab-pane" style="display: none;">
+      <div class="cards-grid" id="engineeringGrid"></div>
+    </section>
+
+    <!-- Tab 3: Interactive Checklist Runner -->
+    <section id="tab-checklists" class="tab-pane" style="display: none;">
+      <div class="checklist-runner">
+        <div class="runner-header">
+          <div>
+            <h2 id="runnerTitle" style="font-size: 20px; font-weight: 700;">Supabase Security Checklist</h2>
+            <p style="font-size: 14px; color: var(--text-secondary);">Interactive stage-gate sign-off runner. Click items to simulate verification.</p>
+          </div>
+          <select id="checklistSelector" class="btn" style="padding: 8px 12px;">
+            <option value="supabase">Supabase Security</option>
+            <option value="appsec">Application Security</option>
+            <option value="a11y">Accessibility (WCAG AA)</option>
+            <option value="database">Database Readiness</option>
+            <option value="deployment">Production Deployment</option>
+          </select>
+        </div>
+
+        <div class="progress-bar-container">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="checklist-items" id="checklistItems"></div>
+      </div>
+    </section>
+
+    <!-- Tab 4: Voice & Writing Lab -->
+    <section id="tab-voice-lab" class="tab-pane" style="display: none;">
+      <div class="voice-lab">
+        <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 8px;">Personal Voice & AI Cliché Cleanser</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 15px;">
+          Adheres to <code>02-creative-communication/04-personal-writing-preferences.md</code>. 
+          Enforces strict tone adaptation and detects telltale AI clichés in real-time.
+        </p>
+
+        <div class="slider-group">
+          <div class="slider-header">
+            <span>Context Formality Level:</span>
+            <span id="sliderValueText" style="color: var(--accent-primary);">Level 3 — Internal Business / Professional</span>
+          </div>
+          <input type="range" min="1" max="5" value="3" class="slider-control" id="formalitySlider">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-top: 6px;">
+            <span>1: WhatsApp / Chat</span>
+            <span>2: Friendly Email</span>
+            <span>3: Business / Proposal</span>
+            <span>4: Technical Report</span>
+            <span>5: Academic Paper</span>
+          </div>
+        </div>
+
+        <div class="cliche-tester">
+          <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">Live AI Cliché Detection</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">
+            Paste text to test against Zima's banned phrases (e.g. <em>delve into, rich tapestry, beacon, testament to, in today's fast-paced world</em>):
+          </p>
+          <textarea id="clicheInput" class="cliche-input" placeholder="Type or paste text here to scan for banned AI filler words..."></textarea>
+          <div id="clicheFeedback" style="font-size: 14px; font-weight: 600;"></div>
+          <div class="cliche-tags" id="clicheTags"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>Antigravity Master Blueprint • Owner: <strong>Zima</strong> • Version 1.0.0</p>
+      <p style="font-size: 12px; margin-top: 4px;">Engineered for Google Antigravity & Hosted on GitHub</p>
+    </div>
+  </footer>
+
+  <script>
+    // System Data
+    const SKILLS_DATA = [
+      { name: "project-intake-requirements", title: "Project Intake & Requirements", desc: "Scope definition, MVP boundaries, tech stack evaluation, and uncovering implicit dependencies.", path: "./03-skills/project-intake-requirements/SKILL.md" },
+      { name: "architecture-review", title: "Architecture Review", desc: "System design assessment, layer decoupling, adapter pattern verification, and technical debt audit.", path: "./03-skills/architecture-review/SKILL.md" },
+      { name: "frontend-quality-audit", title: "Frontend Quality Audit", desc: "Component architecture, server state isolation, form lifecycle states, and Core Web Vitals.", path: "./03-skills/frontend-quality-audit/SKILL.md" },
+      { name: "backend-engineering-review", title: "Backend Engineering Review", desc: "REST URI compliance, zero-trust schema ingress, RFC-7807 error envelopes, and background queues.", path: "./03-skills/backend-engineering-review/SKILL.md" },
+      { name: "database-architecture-review", title: "Database Architecture Review", desc: "3NF schema audit, foreign key index validation, N+1 query detection, and non-blocking migrations.", path: "./03-skills/database-architecture-review/SKILL.md" },
+      { name: "supabase-security-review", title: "Supabase Security Review", desc: "Mandatory Row Level Security (RLS) verification, service-role quarantine, and hardened database functions.", path: "./03-skills/supabase-security-review/SKILL.md" },
+      { name: "application-security-audit", title: "Application Security Audit", desc: "STRIDE threat modeling, OWASP Top 10 vulnerabilities, IDOR inspection, and file magic-byte checks.", path: "./03-skills/application-security-audit/SKILL.md" },
+      { name: "privacy-compliance-review", title: "Privacy & Compliance Review", desc: "Data minimization, cookie banner script gating, GDPR Art. 15/17 export and hard-purge workflows.", path: "./03-skills/privacy-compliance-review/SKILL.md" },
+      { name: "ui-ux-design-audit", title: "UI/UX Design Audit", desc: "Visual hierarchy, 8pt spatial grid adherence, semantic color tokens, and anti-generic AI aesthetics.", path: "./03-skills/ui-ux-design-audit/SKILL.md" },
+      { name: "accessibility-audit", title: "Accessibility (WCAG AA) Audit", desc: "4.5:1 / 3:1 contrast ratios, keyboard navigation, modal focus traps, and screen reader semantic HTML.", path: "./03-skills/accessibility-audit/SKILL.md" },
+      { name: "code-quality-review", title: "Code Quality Review", desc: "Strict typing, cyclomatic complexity reduction, guard clauses, and premature abstraction detection.", path: "./03-skills/code-quality-review/SKILL.md" },
+      { name: "testing-qa-review", title: "Testing & QA Review", desc: "Testing Trophy balance, edge-case coverage, eliminating arbitrary sleeps, and MSW network mocking.", path: "./03-skills/testing-qa-review/SKILL.md" },
+      { name: "deployment-readiness-review", title: "Deployment Readiness Review", desc: "CI/CD release gating, environment variable schema validation, health probes, and rollback safety.", path: "./03-skills/deployment-readiness-review/SKILL.md" },
+      { name: "documentation-review", title: "Documentation Review", desc: "5-minute developer onboarding verification, README completeness, ADR records, and OpenAPI contracts.", path: "./03-skills/documentation-review/SKILL.md" },
+      { name: "requirements-gap-analysis", title: "Requirements Gap Analysis", desc: "Core 'Think Beyond the Prompt' engine. Unearthing unstated security, data, and failure edge cases.", path: "./03-skills/requirements-gap-analysis/SKILL.md" }
+    ];
+
+    const ENGINEERING_DATA = [
+      { id: "01", title: "Architecture & System Design", desc: "Separation of concerns, modular directory patterns, adapter patterns, and circuit breakers.", path: "./01-engineering/01-architecture-system-design/standards.md" },
+      { id: "02", title: "Frontend Engineering", desc: "TypeScript-first, remote state isolation, 5-state form lifecycles, and Core Web Vitals.", path: "./01-engineering/02-frontend-engineering/standards.md" },
+      { id: "03", title: "Backend Engineering", desc: "Resource-oriented REST, zero-trust validation, RFC-7807 errors, and structured JSON logs.", path: "./01-engineering/03-backend-engineering/standards.md" },
+      { id: "04", title: "Database Engineering", desc: "3NF baseline, UUID keys, composite index leftmost rule, and expand/contract zero-downtime migrations.", path: "./01-engineering/04-database-engineering/standards.md" },
+      { id: "05", title: "Supabase Architecture & Security", desc: "Mandatory table RLS, granular CRUD rules, service-role isolation, and SECURITY DEFINER search_path hardening.", path: "./01-engineering/05-supabase/standards.md" },
+      { id: "06", title: "Application Security", desc: "STRIDE threat modeling, parameterized queries, Argon2id passwords, and file magic-byte validation.", path: "./01-engineering/06-application-security/standards.md" },
+      { id: "07", title: "Privacy & Compliance", desc: "Privacy by design, 4-tier cookie consent, GDPR Art. 15/17 export and hard purge, and license audits.", path: "./01-engineering/07-privacy-compliance/standards.md" },
+      { id: "08", title: "UI/UX Design Quality", desc: "Anti-generic AI mandate, harmonic typographic scale, 8pt grid, 60-30-10 color rule, and dark mode elevation.", path: "./01-engineering/08-ui-ux-design-quality/standards.md" },
+      { id: "09", title: "Web Accessibility (A11y)", desc: "WCAG 2.1/2.2 AA compliance, 4.5:1 contrast, First Rule of ARIA, keyboard focus traps, and screen reader flows.", path: "./01-engineering/09-accessibility/standards.md" },
+      { id: "10", title: "Testing & Quality Assurance", desc: "Testing Trophy, ephemeral test database isolation, MSW mocking, and zero-flakiness enforcement.", path: "./01-engineering/10-testing-qa/standards.md" },
+      { id: "11", title: "Deployment & DevOps", desc: "Immutable CI/CD, startup environment schema validation, health probes (/health/live, /health/ready), and rollback.", path: "./01-engineering/11-deployment-devops/standards.md" },
+      { id: "12", title: "Technical Documentation", desc: "The 5-minute onboarding rule, standard root README structure, ADR format, and OpenAPI specs.", path: "./01-engineering/12-technical-documentation/standards.md" }
+    ];
+
+    const CHECKLIST_DATA = {
+      supabase: [
+        { req: true, text: "Row Level Security (RLS) explicitly enabled on 100% of public tables." },
+        { req: true, text: "FORCE ROW LEVEL SECURITY applied to prevent bypass by table owners." },
+        { req: true, text: "Granular CRUD policies: Separate explicit policies for SELECT, INSERT, UPDATE, DELETE." },
+        { req: true, text: "INSERT policies enforce WITH CHECK (auth.uid() = user_id)." },
+        { req: true, text: "service_role key ZERO-exposed in client-side code, Git, or frontend .env files." },
+        { req: true, text: "SECURITY DEFINER functions declare explicit SET search_path = public, auth;." },
+        { req: false, text: "B-Tree indexes verified on all foreign key columns referenced in RLS policies." }
+      ],
+      appsec: [
+        { req: true, text: "100% of database queries parameterized (zero raw SQL string concatenation)." },
+        { req: true, text: "Session cookies marked HttpOnly, Secure, and SameSite=Lax/Strict." },
+        { req: true, text: "Password hashing uses Argon2id or bcrypt (cost factor >= 12)." },
+        { req: true, text: "Zero hardcoded API secrets or private keys in Git repository." },
+        { req: true, text: "File uploads validate byte magic numbers (not just file extensions)." },
+        { req: false, text: "Rate limiting active on login, registration, and reset routes." }
+      ],
+      a11y: [
+        { req: true, text: "Contrast ratio >= 4.5:1 verified on all normal body prose." },
+        { req: true, text: "All interactive controls reachable and operable via keyboard alone." },
+        { req: true, text: "High-contrast visible focus rings (>= 2px) present (:focus-visible)." },
+        { req: true, text: "Modal dialog traps focus, supports Escape dismissal, and restores focus." },
+        { req: true, text: "Native HTML elements used instead of generic clickable <div> tags." },
+        { req: false, text: "Skip to main content link present as first focusable element." }
+      ],
+      database: [
+        { req: true, text: "Baseline 3NF normalization verified; primary keys defined on all tables." },
+        { req: true, text: "Foreign key constraints enforced with explicit ON DELETE behaviors." },
+        { req: true, text: "Foreign key columns have dedicated supporting B-Tree indexes." },
+        { req: true, text: "Multi-step mutations executed in atomic transactions (BEGIN ... COMMIT)." },
+        { req: true, text: "Zero-downtime expand/contract pattern used for schema changes." },
+        { req: false, text: "Partial indexes created for high-frequency filtered status queries." }
+      ],
+      deployment: [
+        { req: true, text: "CI/CD pipeline green: Lint, typecheck, tests, and security scans passed." },
+        { req: true, text: "Production environment variables validated via startup schema." },
+        { req: true, text: "Dual health probes (/health/live, /health/ready) responding with 200 OK." },
+        { req: true, text: "Previous build artifact retained for automated 60-second rollback." },
+        { req: true, text: "Live smoke test verified on login and core checkout journey." },
+        { req: false, text: "Sentry/Datadog monitored with zero error rate spikes for 15 minutes." }
+      ]
+    };
+
+    // Render Skills
+    function renderSkills(items) {
+      const grid = document.getElementById('skillsGrid');
+      grid.innerHTML = items.map(s => `
+        <div class="card">
+          <span class="card-badge badge-skill">Antigravity Skill</span>
+          <h3>${s.title}</h3>
+          <p>${s.desc}</p>
+          <div class="card-footer">
+            <code>${s.name}</code>
+            <a href="${s.path}">Read SKILL.md →</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Render Engineering
+    function renderEngineering(items) {
+      const grid = document.getElementById('engineeringGrid');
+      grid.innerHTML = items.map(e => `
+        <div class="card">
+          <span class="card-badge badge-eng">Module ${e.id}</span>
+          <h3>${e.title}</h3>
+          <p>${e.desc}</p>
+          <div class="card-footer">
+            <span style="color: var(--text-muted);">Standard Document</span>
+            <a href="${e.path}">View Standards →</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Render Checklist
+    function renderChecklist(type) {
+      const list = CHECKLIST_DATA[type] || CHECKLIST_DATA.supabase;
+      const container = document.getElementById('checklistItems');
+      container.innerHTML = list.map((item, idx) => `
+        <label class="check-item" for="chk_${idx}">
+          <input type="checkbox" id="chk_${idx}" onchange="updateProgress()">
+          <div class="check-item-text">
+            ${item.req ? '<span class="tag-req">REQUIRED</span>' : '<span class="tag-rec">RECOMMENDED</span>'}
+            ${item.text}
+          </div>
+        </label>
+      `).join('');
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('#checklistItems input[type="checkbox"]');
+      const total = checkboxes.length;
+      let checked = 0;
+      checkboxes.forEach(c => { if (c.checked) checked++; });
+      const pct = total === 0 ? 0 : Math.round((checked / total) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+    }
+
+    // Search Filtering
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      const filteredSkills = SKILLS_DATA.filter(s => 
+        s.title.toLowerCase().includes(query) || 
+        s.desc.toLowerCase().includes(query) || 
+        s.name.toLowerCase().includes(query)
+      );
+      const filteredEng = ENGINEERING_DATA.filter(en => 
+        en.title.toLowerCase().includes(query) || 
+        en.desc.toLowerCase().includes(query)
+      );
+      renderSkills(filteredSkills);
+      renderEngineering(filteredEng);
+    });
+
+    // Tab Navigation
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).style.display = 'block';
+      });
+    });
+
+    // Checklist Select
+    document.getElementById('checklistSelector').addEventListener('change', (e) => {
+      renderChecklist(e.target.value);
+    });
+
+    // Formality Slider
+    const formalityLabels = {
+      1: "Level 1 — Casual WhatsApp / Direct Message",
+      2: "Level 2 — Warm / Conversational Email",
+      3: "Level 3 — Internal Business / Feature Proposal",
+      4: "Level 4 — Technical Report / Architecture Review",
+      5: "Level 5 — Rigorous Academic / Scholarly Research"
+    };
+    document.getElementById('formalitySlider').addEventListener('input', (e) => {
+      document.getElementById('sliderValueText').innerText = formalityLabels[e.target.value];
+    });
+
+    // Banned Cliches Scanner
+    const BANNED_CLICHES = [
+      "delve", "delve into", "tapestry", "rich tapestry", "beacon", "testament to", 
+      "in today's fast-paced world", "in today's digital landscape", "crucial", 
+      "paramount", "furthermore", "moreover", "leverage", "synergize"
+    ];
+    document.getElementById('clicheInput').addEventListener('input', (e) => {
+      const text = e.target.value.toLowerCase();
+      const found = BANNED_CLICHES.filter(c => text.includes(c));
+      const feedback = document.getElementById('clicheFeedback');
+      const tags = document.getElementById('clicheTags');
+
+      if (!text.trim()) {
+        feedback.innerText = "";
+        tags.innerHTML = "";
+        return;
+      }
+
+      if (found.length === 0) {
+        feedback.innerHTML = `<span style="color: var(--success);">✓ Clean prose. Zero banned AI clichés detected!</span>`;
+        tags.innerHTML = "";
+      } else {
+        feedback.innerHTML = `<span style="color: var(--danger);">⚠ Flagged ${found.length} banned AI cliché(s):</span>`;
+        tags.innerHTML = found.map(f => `<span class="cliche-pill">"${f}"</span>`).join('');
+      }
+    });
+
+    // Theme Toggle
+    const themeBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    let isDark = true;
+    themeBtn.addEventListener('click', () => {
+      isDark = !isDark;
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      themeIcon.innerText = isDark ? '☀️' : '🌙';
+      themeBtn.innerHTML = `${themeIcon.outerHTML} ${isDark ? 'Light Mode' : 'Dark Mode'}`;
+    });
+
+    // Initial Render
+    renderSkills(SKILLS_DATA);
+    renderEngineering(ENGINEERING_DATA);
+    renderChecklist('supabase');
+  </script>
+</body>
+</html>
